@@ -11,7 +11,7 @@
             padding: 0;
         }
         .item {
-            float: left;
+            /* float: left; */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -132,11 +132,15 @@
                 }
             }
         }
-
+        let time;
         //当页面尺寸发生变化时，触发函数，实现响应式
         window.onresize = function () {
             // setInterval
-            waterFall();
+            if(time)
+            clearTimeout(time)
+            time = this.setTimeout(() => {
+                waterFall();
+            },200)
         }
 
          // clientWidth 处理兼容性
