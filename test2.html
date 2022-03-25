@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // function a(x){
+        //     var tem = 3;
+        //     function b(y){
+        //         console.log(x+y+(++tem));
+        //     }
+        //     return b
+        // }
+        // var b = a(1)
+        // b(2)
+        // b(3)
+        let res = [{'carLicensenumber':'123465'},{'carLicensenumber':'98746516'}]
+        // console.log(res);
+
+        let A = res;
+        let b = []
+        // console.log(A.map((item) => {
+        //     return item.carLicensenumber
+        // }))
+        b = res.reduce((prev,next,index)=> {
+            next.index = index;
+            prev[next.carLicensenumber] = next;
+            return prev
+        },{})
+
+        console.log(b);
+
+        let headList = {
+            "data_cost": {
+                "cost": "总消耗",
+                "grants_cost": "赠款消耗",
+            },
+            "data_cost_customer": {
+                "cost_customer":"有消耗客户数"
+            },
+            "data_cost_advertiser": {
+                "cost_advertiser":"有消耗帐户数"
+            },
+            "data_customer": {
+            "customer": "广告主客户数",
+            },
+            "data_advertiser":{
+                "advertiser": "广告主帐户数",
+            }
+        }
+        let flaten = Object.keys(headList).reduce((prev,next) => {
+            let obj = headList[next];
+            return Object.keys(obj).reduce((pre,nxt) => {
+                pre[nxt] = obj[nxt]
+                return pre
+            },prev)
+        },{})
+        console.log(flaten);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

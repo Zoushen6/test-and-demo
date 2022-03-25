@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var length = 6;
+        function fn(){
+            console.log(this.length);
+        }
+        var b = {
+            length:3,
+            fn:function (fn) {
+                fn();
+                arguments[0]();
+                fn.call(b,5)
+            }
+        }
+        b.fn(fn,10)
+    </script>
+
+    <style>
+        
+        input[type=checkbox]{
+            /* visibility 属性规定元素是否可见*/
+            visibility: hidden;
+        }
+        label{
+            display: block;
+            line-height: 20px;
+            width: 55px;
+            height: 55px;
+            cursor: pointer;
+            position: absolute;
+            border:  1px solid red;/*改变复选框的边框颜色也可以不要边框*/
+            top: 6px;
+            left: 6px;
+        }
+
+        input:checked +label:before{/*before为伪元素可以在元素之后添加内容*/
+            display: block;
+        /*	css3中的content字符编码*/
+            content: "11";
+        /*	复选框里面的&radic;居中*/
+            text-align: center;
+        /*	复选框里面的&radic;大小*/
+            font-size: 20px;
+        /*	字体的颜色*/
+            color: red;
+        /*  复选框勾选后的背景颜色*/
+            background: blue;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" class="check"/> 
+        <label  for="input"></label >
+    </div>
+</body>
+</html>

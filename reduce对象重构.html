@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let a = [
+                {
+                    date_time: "2021-11-26",
+                    children: [
+                        {
+                            category: "基础报表",
+                            current_num: "32001",
+                            date_time: "2021-11-26",
+                            file_name: "基础报表_2021-09-01-2021-09-30_196210.xlsx",
+                            id: "111",
+                            status: "2",
+                            total_num: "32001"
+                        },{
+                            category: "基础报表",
+                            current_num: "32001",
+                            date_time: "2021-11-26",
+                            file_name: "基础报表_2021-09-01-2021-09-30_196210.xlsx",
+                            id: "112",
+                            status: "2",
+                            total_num: "32001"
+                        },{
+                            category: "基础报表",
+                            current_num: "32001",
+                            date_time: "2021-11-26",
+                            file_name: "基础报表_2021-09-01-2021-09-30_196210.xlsx",
+                            id: "113",
+                            status: "2",
+                            total_num: "32001"
+                        },
+                    ]
+                },{
+                    date_time: "2022222",
+                    children: [
+                        {
+                            category: "基础报表",
+                            current_num: "32001",
+                            date_time: "2021-11-26",
+                            file_name: "基础报表_2021-09-01-2021-09-30_196210.xlsx",
+                            id: "12313212313212",
+                            status: "2",
+                            total_num: "32001"
+                        }
+                    ]
+                },
+            ];
+        let obj = a.reduce((res, next) => {
+                                // console.log(next.date_time);
+                                                
+                                next.children.reduce((result, it) => {
+                                    // console.log(it);
+                                    result[it.id] = it;
+                                    let a = JSON.parse(JSON.stringify(result));
+                                    // console.log(a);
+
+                                    return result;
+                                }, res)
+                                return res;
+                            }, {});
+console.log(obj);
+
+
+
+         let b = {
+              "2021-11-29": [
+                        {
+                            category: "基础报表",
+                            current_num: "32001",
+                            date_time: "2021-11-26",
+                            file_name: "基础报表_2021-09-01-2021-09-30_196210.xlsx",
+                            id: "111",
+                            status: "2",
+                            total_num: "32001"
+                        },{
+                            category: "基础报表",
+                            current_num: "32001",
+                            date_time: "2021-11-26",
+                            file_name: "基础报表_2021-09-01-2021-09-30_196210.xlsx",
+                            id: "112",
+                            status: "2",
+                            total_num: "32001"
+                        },{
+                            category: "基础报表",
+                            current_num: "32001",
+                            date_time: "2021-11-26",
+                            file_name: "基础报表_2021-09-01-2021-09-30_196210.xlsx",
+                            id: "113",
+                            status: "2",
+                            total_num: "32001"
+                        },
+                    ],
+                "2021-1-29": [
+                        {
+                            category: "基础报表",
+                            current_num: "32001",
+                            date_time: "2021-11-26",
+                            file_name: "基础报表_2021-09-01-2021-09-30_196210.xlsx",
+                            id: "12313212313212",
+                            status: "2",
+                            total_num: "32001"
+                        }
+                ]
+            };         
+            
+            let newB = []
+
+            newB = Object.keys(b).map(((item) => {
+               return {
+                "time" : item,
+                "children" : b[item]
+               } 
+            }))
+
+            // console.log(newB);
+            
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
