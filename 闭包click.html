@@ -1,50 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        .ddd {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            justify-content: center;
-        }
+      .ddd {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+      }
 
-        button {
-            margin-top: 20px;
-            width: 100px;
-            height: 40px;
-        }
+      button {
+        margin-top: 20px;
+        width: 100px;
+        height: 40px;
+      }
     </style>
-    
-</head>
-<body>
-    <div id="111" class='ddd'>
-        <button>0</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>4</button>
+  </head>
+  <body>
+    <div id="111" class="ddd">
+      <button>0</button>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>4</button>
     </div>
-</body>
+  </body>
 
-<script>
-    var allbutton = document.getElementById("111").getElementsByTagName('button');
-    console.log(allbutton);
-    let len = allbutton.length;
-    for(var i = 0;i < len; i++) {
-
-        //自自执行函数  把i传进去
-        allbutton[i].onclick = function(i){
-            return function(){
-                console.log('button'+i+'has been click');
-            }
-        }(i);
+  <script>
+    var allbutton = document.getElementById('111').getElementsByTagName('button')
+    console.log(allbutton)
+    let len = allbutton.length
+    for (var i = 0; i < len; i++) {
+      //自自执行函数  把i传进去
+      allbutton[i].onclick = (function (i) {
+        return function () {
+          console.log('button' + i + 'has been click')
+        }
+      })(i)
     }
-
-    
-</script>
+  </script>
 </html>

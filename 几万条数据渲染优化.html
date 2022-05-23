@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <title>框架使用示例</title>
+    <style>
+      #app {
+        margin-left: 50%;
+      }
+      .list {
+        height: 80%;
+        width: 200px;
+        overflow: hidden scroll;
+      }
+    </style>
+    <script src=" https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button onclick="alert(123)">按钮</button>
+      <button @click="stop">停止</button>
+      <div class="list">
+        <ul>
+          列表
+          <li v-for="(item,key) in data" :key="key">{{item}}</li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          data: [],
+          resList: [],
+          once: 50, //每次渲染20条数据
+          count: 0, //计数器 到最大条数停止
+          aniId: ''
+        },
+        created() {
+          this.fetchData()
+        },
+        methods: {
+          fetchData() {
+            // 模拟接口请求
+            new Promise((resolve, reject) => {
+              setTimeout(() => {
+                let res = { total: 100000 }
+                res.data = []
+                for (let i = 0; i < res.total; i++) {
+                  res.data.push(i)
+                }
+                resolve(res)
+              }, 100)
+            }).then(res => {
+              this.resList = res.data
+              this.loop()
+            })
+          },
+
+          loop() {
+            //requestAnimationFrame 回调函数执行次数通常是每秒60次
+            this.aniId = window.requestAnimationFrame(() => {
+              let list = []
+              for (let i = 0; i < this.once; i++) {
+                list.push(this.resList[this.count++])
+              }
+              this.data = this.data.concat(list)
+              if (this.count === this.resList.length) {
+                return
+              }
+              this.loop()
+            })
+            // console.log(this.aniId)
+          },
+
+          stop() {
+            //停止
+            window.cancelAnimationFrame(this.aniId)
+            // console.log('cancel', this.aniId)
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
