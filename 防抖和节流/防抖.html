@@ -16,11 +16,13 @@
     return function () {
       clearTimeout(timeout); // 每当用户输入的时候把前一个 setTimeout clear 掉
       timeout = setTimeout(() => { // 然后又创建一个新的 setTimeout, 这样就能保证输入字符后的 interval 间隔内如果还有字符输入的话，就不会执行 fn 函数
-        fn.apply(this, arguments);
+        // fn()   这样的话fn()是window调用的（setTimeout的中this指向window，而不是inp）
+        fn.apply(this, arguments);   
       }, 500);
     };
   }
   function sayHi() {
+    console.log('this:', this);
     this.style.color = 'red' //inp添加监听事件的回调，调用了sayHi，谁调用this指向谁，所以上面fn.apply(this, arguments) 中的this指向input
     console.log('防抖成功');
   }
