@@ -30,7 +30,7 @@
         data: {
           data: [],
           resList: [],
-          once: 50, //每次渲染20条数据
+          once: 1, //每次渲染20条数据
           count: 0, //计数器 到最大条数停止
           aniId: ''
         },
@@ -63,7 +63,7 @@
                 list.push(this.resList[this.count++])
               }
               this.data = this.data.concat(list)
-              if (this.count === this.resList.length) {
+              if (this.count === 30) {
                 return
               }
               this.loop()
