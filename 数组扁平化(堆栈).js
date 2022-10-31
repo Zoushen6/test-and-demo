@@ -12,4 +12,15 @@ const flatten = (arr) => {
     }
     return res.reverse()
 }
-console.log(flatten(arr1));
+// console.log(flatten(arr1));
+
+function flattenOfSome(arr) {
+    while (arr.some(item=> Array.isArray(item))) {
+      console.log(...arr)
+      arr = [].concat(...arr)
+      console.log(arr)
+    }
+    return arr
+  }
+
+  flattenOfSome(arr1)
