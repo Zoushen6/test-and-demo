@@ -21,6 +21,27 @@ f = Object.assign(a,f)
 let d = a[key]
 
 
+let add = function(...arguments) {
+    console.log(arguments);
+    let res = arguments.reduce((res,item) => 
+    {
+        return parseFloat(Number(res)+Number(item)).toFixed(2)
+    }
+    ,0)
+    return res
+}
 
+// console.log(add(0.1,0.2,0.3));
 
+const obj = {
+    m:1,
+    n:2,
+    k:3
+}
+let {m,n,k} = obj || {}
+m = 888
 
+if(obj.m??'' !== "") {
+    console.log(obj.m);
+}
+// console.log(obj,m);
