@@ -18,4 +18,9 @@
 
 };
 
-console.log(exchange([1,2,3,4]));
+// console.log(exchange([1,2,3,4]));
+for(let i = 0;i<5;i++) {
+    setTimeout(() => {
+        console.log(i)
+    }, 1000);
+}

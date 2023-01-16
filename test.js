@@ -41,7 +41,7 @@ const obj = {
 let {m,n,k} = obj || {}
 m = 888
 
-if(obj.m??'' !== "") {
-    console.log(obj.m);
-}
-// console.log(obj,m);
+// if(obj.m??'' !== "") {
+//     console.log(obj.m);
+// }
+console.log(obj.test?.());
