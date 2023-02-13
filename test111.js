@@ -21,6 +21,17 @@
 // console.log(exchange([1,2,3,4]));
 for(let i = 0;i<5;i++) {
     setTimeout(() => {
-        console.log(i)
+        // console.log(i)
     }, 1000);
 }
+
+function varTest() {
+    var x = 1;
+    if (true) {
+      var x = 2;  // 同样的变量!
+      console.log(x);  // 2
+    }
+    console.log(x);  // 2
+  }
+
+  varTest()
