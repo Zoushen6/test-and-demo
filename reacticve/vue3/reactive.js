@@ -5,7 +5,6 @@ export const reactive = (target) => {
     return new Proxy(target, {
         get(target, key, receiver) {
             const res = Reflect.get(target, key, receiver);
-            debugger;
             track(target, key);
             //递归多层嵌套对象
             if (isObject(res)) {

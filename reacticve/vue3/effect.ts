@@ -1,10 +1,18 @@
+interface Options {
+    scheduler?: Function
+}
+
 let activeEffect: () => void;
-const effect = (fn:Function) => {
+const effect:any = (fn:Function,options:Options) => {
     const _effect = function () {
         activeEffect = _effect;
-        fn()
+        let res = fn()
+        //computed
+        return res
     }
+    _effect.options = options
     _effect()
+    return _effect
 }
 
 const targetMap = new WeakMap()
@@ -26,7 +34,13 @@ const track = (target: object, key: string | symbol) =>{
 const trigger = (target: object, key: string | symbol) => {
     const depsMap = targetMap.get(target)
     const deps = depsMap.get(key)
-    deps.forEach((effect: () => any)=>effect())
+    deps.forEach((effect: any)=> {
+        if(effect?.options?.scheduler) {
+            effect?.options?.scheduler?.()
+        }else {
+            effect()
+        }
+    })
 }
 
 export {
