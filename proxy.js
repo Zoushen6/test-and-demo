@@ -20,3 +20,27 @@ var proxy = new Proxy(person, {
 });
 
 console.log(proxy.name,proxy);  // "张三"
+
+
+
+//对数组进行代理
+var person = ['asdasdas',123,546]
+var proxy = new Proxy(person, {
+    get(target, propKey) {
+        console.log('getKey:' + propKey);
+        return Reflect.get(target,propKey)
+    },
+    set(target, propKey, value,proxy) {
+        console.log('setKey:' + propKey);
+        return Reflect.set(target, propKey, value,proxy)
+    }
+});
+proxy.pop()
+console.log(proxy);
+
+//output
+// getKey:pop  读取pop属性
+// getKey:length   读取length属性
+// getKey:2   读取pop的元素下标 并返回
+// setKey:length    设置数组length为2 即删除最后一个元素
+// [ 'asdasdas', 123 ]
