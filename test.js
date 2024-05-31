@@ -75,15 +75,46 @@
 // })
 // console.log(arr);
 
-const foo = () => {
-    console.log(a);
-}
+// const foo = () => {
+//     console.log(a);
+// }
 
-global.name = 4
-name = 6
- const bar = () => {
-    this.name = 1
-    console.log(this);
-}
-bar()
+// global.name = 4
+// name = 6
+//  const bar = () => {
+//     this.name = 1
+//     console.log(this);
+// }
+// bar()
 // console.log(this.name)
+// function fn(a)  
+// {  
+//     this.user = a;  
+//     return 1;
+// }
+// var a = new fn;  
+// console.log(a.user); //xxx
+
+const newNavBarList = [
+    {name: '待办',selectName: '我的待办',isActive: 1,quantity: 0},
+    {name: '已办',selectName: '我的已办',isActive: 2,quantity: 0},
+    {name: '提醒',selectName: '我的提醒',isActive: 3,quantity: 0},
+    {name: '待办',selectName: '我的待办',isActive: 1,quantity: 0},
+    {name: '已办',selectName: '我的已办',isActive: 2,quantity: 0},
+    {name: '提醒',selectName: '我的提醒',isActive: 3,quantity: 0},
+]
+
+const set = new Map()
+
+
+newNavBarList.forEach(item => {
+    if(set.has(item.name)) {
+        set.get(item.name).push(item)
+    }else {
+        set.set(item.name,[item])
+    }
+})
+
+const res = [...set.values()]
+
+console.log(res);

@@ -10,6 +10,11 @@ function Parent(){
   }
   Child.prototype = new Parent();
   var child = new Child();
+  child.list.push('modify') 
   console.log(Child.prototype);
   console.log(child.name);
   child.sayHi();
+  var child2 = new Child();
+  console.log(Child.prototype);
+  console.log(child2.name);
+  child2.sayHi();
