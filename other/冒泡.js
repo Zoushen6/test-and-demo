@@ -24,6 +24,6 @@ for(let i = 0;i < a.length-1;i++) {
     }
     if(finish) {
         break
-    } 
+    }
 }
 console.log(a);

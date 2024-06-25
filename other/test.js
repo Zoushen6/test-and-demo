@@ -95,26 +95,51 @@
 // var a = new fn;  
 // console.log(a.user); //xxx
 
-const newNavBarList = [
-    {name: '待办',selectName: '我的待办',isActive: 1,quantity: 0},
-    {name: '已办',selectName: '我的已办',isActive: 2,quantity: 0},
-    {name: '提醒',selectName: '我的提醒',isActive: 3,quantity: 0},
-    {name: '待办',selectName: '我的待办',isActive: 1,quantity: 0},
-    {name: '已办',selectName: '我的已办',isActive: 2,quantity: 0},
-    {name: '提醒',selectName: '我的提醒',isActive: 3,quantity: 0},
-]
+// const newNavBarList = [
+//     {name: '待办',selectName: '我的待办',isActive: 1,quantity: 0},
+//     {name: '已办',selectName: '我的已办',isActive: 2,quantity: 0},
+//     {name: '提醒',selectName: '我的提醒',isActive: 3,quantity: 0},
+//     {name: '待办',selectName: '我的待办',isActive: 1,quantity: 0},
+//     {name: '已办',selectName: '我的已办',isActive: 2,quantity: 0},
+//     {name: '提醒',selectName: '我的提醒',isActive: 3,quantity: 0},
+// ]
 
-const set = new Map()
+// const set = new Map()
 
 
-newNavBarList.forEach(item => {
-    if(set.has(item.name)) {
-        set.get(item.name).push(item)
-    }else {
-        set.set(item.name,[item])
-    }
-})
+// newNavBarList.forEach(item => {
+//     if(set.has(item.name)) {
+//         set.get(item.name).push(item)
+//     }else {
+//         set.set(item.name,[item])
+//     }
+// })
 
-const res = [...set.values()]
+// const res = [...set.values()]
 
-console.log(res);
+// console.log(res);
+
+async function async1() {
+    console.log('async1 start');
+    await async2();
+    console.log('async1 end');
+}
+async function async2() {
+	console.log('async2');
+}
+
+console.log('script start');
+
+setTimeout(function() {
+    console.log('setTimeout');
+}, 0)
+
+async1();
+
+new Promise(function(resolve) {
+    console.log('promise1');
+    resolve();
+}).then(function() {
+    console.log('promise2');
+});
+console.log('script end');
