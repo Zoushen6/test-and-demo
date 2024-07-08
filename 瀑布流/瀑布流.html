@@ -5,10 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>瀑布流</title>
+    <script type="text/javascript"  src="html-to-image.js"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
+        }
+        .box {
+            position: relative;
         }
         .item {
             /* float: left; */
@@ -94,7 +98,7 @@
     <script>
         let items = document.getElementsByClassName('item');
         let gap = 8; //间隔10px
-
+        
          window.onload = function () {
              waterFall();
          }
@@ -150,6 +154,29 @@
                 height: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
             }
         }
+
+        // 等待文档加载完成
+        document.addEventListener('DOMContentLoaded', function() {
+            // 从 html-to-image 库中引入 toSvg 方法
+            console.log(window.htmlToImage);
+
+            const { toSvg } = window.htmlToImage;
+
+            const box = document.getElementById('box');
+            console.log(box);
+            toSvg(box).then(function (dataUrl) {
+                console.log(dataUrl);
+                const item = document.createElement('div');
+                item.className = 'item item-3';
+                item.style.backgroundColor = 'red'
+                item.style.height = '400px'
+                item.style.textAlign = 'center'
+                item.innerText = 'html-to-image generated SVG';
+                box.appendChild(item);
+            }).catch(function (error) {
+                console.error('oops, something went wrong!', error);
+            });
+        });
     </script>
 </head>
 <body>
@@ -179,7 +206,8 @@
         <div class="item item-22">22</div>        
         <div class="item item-22">22</div>        
         <div class="item item-22">22</div>        
-        <div class="item item-22">22</div>        
+        <div class="item item-22">22</div> 
     </div>
+    <img id="resImg" />       
 </body>
 </html>
